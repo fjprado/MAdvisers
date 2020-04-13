@@ -1,0 +1,15 @@
+<a [routerLink]="['/agendamentos', agendamento.id]">
+  <!-- Quando o resultado do template pode ser diferente dependendo do item -->
+  <div class="place-info-box">
+    <div class="place-info-box-content">      
+      <span class="place-info-box-text">{{agendamento?.concessionaria}}</span>
+      <span class="place-info-box-text">{{agendamento?.marca}}</span>
+      <span class="place-info-box-text">{{agendamento?.cidade}} - {{agendamento?.uf}}</span>
+      <span class="place-info-box-detail">{{agendamento?.dataInicio | date: 'dd/MM/yyyy'}} - {{agendamento?.dataTermino | date: 'dd/MM/yyyy'}}</span>
+      <span class="place-info-box-detail">{{agendamento?.sistema}}</span>
+      <span class="place-info-box-detail">{{agendamento?.nomeResponsavel}}</span>
+      <span class="place-info-box-detail">{{agendamento?.contatoResponsavel}}</span>
+    </div>
+    <!-- /.info-box-content -->
+  </div>
+</a>

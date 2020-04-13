@@ -1,0 +1,29 @@
+<div class="box box-solid">
+  <div class="box-header">
+    <i class="fa fa-clock-o"></i>
+
+    <h3 class="box-title">Registro de Apontamentos</h3>
+  </div>
+  <!-- /.box-header -->
+  <div class="box-body">
+    <div *ngIf="!apontamentos().length">
+      <p class="text-center">
+        Não há apontamentos
+      </p>
+    </div>
+    <div class="table-responsive" *ngIf="apontamentos().length">
+        <table class="table">
+          <tbody>
+          <tr *ngFor="let item of apontamentos()">
+            <th style="width:60%">{{item.getData()}}</th>
+            <td class="text-right">{{item.getHora()}}</td>
+          </tr>
+          <tr>
+            <th>Total de horas:</th>
+
+            <td class="text-right">{{totalDeHoras()}}</td>
+          </tr>
+        </tbody></table>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<section class="content-header">
+  <h1 class="text-center">
+    Todos os Agendamentos
+  </h1>
+</section>
+
+
+<section class="content">
+
+  <div class="row">
+    <div *ngFor="let agendamento of agendamentos" class="col-sm-6 col-xs-12">
+      <madv-agendamento [agendamento]="agendamento"></madv-agendamento>
+    </div>
+  </div>
+
+</section>

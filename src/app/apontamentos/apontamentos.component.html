@@ -1,0 +1,19 @@
+<section class="content-header">
+  <h1 class="text-center">
+    Registro de Apontamentos
+  </h1>
+</section>
+<section class="content">
+
+<div class="col-md-6 col-xs-6">
+
+  <madv-relogio-ponto (add)="registroApontamento.addItem($event)"></madv-relogio-ponto>
+  <!-- /.info-box -->
+
+</div>
+<div class="col-md-6 col-xs-6">
+<!--INICIO DOS APONTAMENTOS-->
+<madv-registro-apontamento #registroApontamento></madv-registro-apontamento>
+<!-- FIM DOS APONTAMENTOS -->
+</div>
+</section>

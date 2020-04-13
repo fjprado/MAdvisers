@@ -1,0 +1,17 @@
+<div class="col-xs-12 col-sm-6" *ngFor="let ocorrencia of registrosOcorrencias | async">
+  <div class="box box-solid">
+    <div class="box-header with-border">
+      <div class="user-block pull-left">
+        <span class="username">{{ocorrencia.dataOcorrencia | date: 'dd/MM/yyyy'}}</span>
+        <span class="username">{{ocorrencia.responsavel}}</span>
+        <span class="description texto-ocorrencia" >{{ocorrencia.textoOcorrencia}}</span>
+      </div>
+      <div class="user-block pull-right">
+        <a *ngIf="ocorrencia.tipo === 'ocorrencia'" class="btn btn-lg pull-right"><i class="fa fa-print"></i></a>
+        <a (click)="removerRascunho(ocorrencia)" *ngIf="ocorrencia.tipo === 'rascunho'" class="btn btn-lg pull-right"><i class="fa fa-ban"></i></a>
+        <a (click)="editarRascunho(ocorrencia)" *ngIf="ocorrencia.tipo === 'rascunho'" class="btn btn-lg pull-right"><i class="fa fa-edit"></i></a>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,230 @@
+{
+  "agendamentos": [
+    {
+      "id": "agd-0001",
+      "concessionaria": "Concessionaria 001 - Honda",
+      "marca": "Honda",
+      "cidade": "Americana",
+      "uf": "SP",
+      "dataInicio": "2020-03-02",
+      "dataTermino": "2020-03-06",
+      "sistema": "Cloud",
+      "nomeResponsavel": "José Paulo",
+      "contatoResponsavel": "(19)97115-2112"
+    },
+    {
+      "id": "agd-0002",
+      "concessionaria": "Concessionaria 001 - Yamaha",
+      "marca": "Yamaha",
+      "cidade": "Sumaré",
+      "uf": "SP",
+      "dataInicio": "2020-03-09",
+      "dataTermino": "2020-03-13",
+      "sistema": "Cloud",
+      "nomeResponsavel": "Pedro Roberto",
+      "contatoResponsavel": "(19) 97000-2012"
+    },
+    {
+      "id": "agd-0003",
+      "concessionaria": "Concessionaria 002 - Yamaha",
+      "marca": "Yamaha",
+      "cidade": "Piracicaba",
+      "uf": "SP",
+      "dataInicio": "2020-03-16",
+      "dataTermino": "2020-03-20",
+      "sistema": "Fisco",
+      "nomeResponsavel": "João Fernando",
+      "contatoResponsavel": "(19) 99999-0123"
+    },
+    {
+      "id": "agd-0004",
+      "concessionaria": "Concessionaria 002 - Honda",
+      "marca": "Honda",
+      "cidade": "Nova Odessa",
+      "uf": "SP",
+      "dataInicio": "2020-03-23",
+      "dataTermino": "2020-03-27",
+      "sistema": "Cloud",
+      "nomeResponsavel": "Rodrigo Farias",
+      "contatoResponsavel": "(19) 95622-6262"
+    }
+  ],
+  "informacoes": [
+    {
+      "id": "inf-0001",
+      "numeroFilial": "0001",
+      "concessionaria": "Concessionaria 001 - Honda",
+      "marca": "Honda",
+      "lougradouro": "Avenida Paulista",
+      "numero": "100",
+      "bairro": "Vila Nossa Senhora de Fátima",
+      "cidade": "Americana",
+      "uf": "SP",
+      "cep": "13478-580",
+      "dataInicio": "2020-03-02",
+      "dataTermino": "2020-03-06",
+      "sistema": "Cloud",
+      "nomeResponsavel": "José Paulo",
+      "contatoResponsavel": "(19) 97115-2112",
+      "agendamentoId": "agd-0001"
+    },
+    {
+      "id": "inf-0002",
+      "numeroFilial": "0002",
+      "concessionaria": "Concessionaria 001 - Yamaha",
+      "marca": "Yamaha",
+      "lougradouro": "Avenida Fuad Assef Maluf",
+      "numero": "120",
+      "bairro": "Jardim Bela Vista",
+      "cidade": "Sumaré",
+      "uf": "SP",
+      "cep": "13175-090",
+      "dataInicio": "2020-03-09",
+      "dataTermino": "2020-03-13",
+      "sistema": "Cloud",
+      "nomeResponsavel": "Pedro Roberto",
+      "contatoResponsavel": "(19) 97000-2012",
+      "agendamentoId": "agd-0002"
+    },
+    {
+      "id": "inf-0003",
+      "numeroFilial": "0003",
+      "concessionaria": "Concessionaria 002 - Yamaha",
+      "marca": "Yamaha",
+      "lougradouro": "Avenida Dois Córregos",
+      "numero": "8",
+      "bairro": "Jardim Nova Iguacu",
+      "cidade": "Piracicaba",
+      "uf": "SP",
+      "cep": "13423-100",
+      "dataInicio": "2020-03-16",
+      "dataTermino": "2020-03-20",
+      "sistema": "Fisco",
+      "nomeResponsavel": "João Fernando",
+      "contatoResponsavel": "(19) 99999-0123",
+      "agendamentoId": "agd-0003"
+    },
+    {
+      "id": "inf-0004",
+      "numeroFilial": "0004",
+      "concessionaria": "Concessionaria 002 - Honda",
+      "marca": "Honda",
+      "lougradouro": "Avenida Ampélio Gazzetta",
+      "numero": "558",
+      "bairro": "Jardim Europa",
+      "cidade": "Piracicaba",
+      "uf": "SP",
+      "cep": "13380-116",
+      "dataInicio": "2020-03-23",
+      "dataTermino": "2020-03-27",
+      "sistema": "Cloud",
+      "nomeResponsavel": "Rodrigo Farias",
+      "contatoResponsavel": "(19) 95622-6262",
+      "agendamentoId": "agd-0004"
+    }
+  ],
+  "transporte": [
+    {
+      "id": "trn-0001",
+      "tipo": "aviao",
+      "destino": "ida",
+      "dataInicio": "2020-03-02T08:00",
+      "dataTermino": "2020-03-02T08:30",
+      "comentarios": "Encontrar o responsável na concessionária.",
+      "agendamentoId": "agd-0001"
+    },
+    {
+      "id": "trn-0002",
+      "tipo": "aviao",
+      "destino": "volta",
+      "dataInicio": "2020-03-06T17:30",
+      "dataTermino": "2020-03-06T18:00",
+      "comentarios": "Encontrar taxista na volta.",
+      "agendamentoId": "agd-0001"
+    },
+    {
+      "id": "trn-0003",
+      "tipo": "carro",
+      "destino": "ida",
+      "dataInicio": "2020-03-09T07:00",
+      "dataTermino": "2020-03-09T09:30",
+      "comentarios": "Encontrar o responsável na concessionária.",
+      "agendamentoId": "agd-0002"
+    },
+    {
+      "id": "trn-0004",
+      "tipo": "carro",
+      "destino": "volta",
+      "dataInicio": "2020-03-13T17:30",
+      "dataTermino": "2020-03-13T19:00",
+      "comentarios": "Encontrar taxista na volta.",
+      "agendamentoId": "agd-0002"
+    },
+    {
+      "id": "trn-0005",
+      "tipo": "onibus",
+      "destino": "ida",
+      "dataInicio": "2020-03-16T09:00",
+      "dataTermino": "2020-03-16T11:30",
+      "comentarios": "Encontrar o responsável na concessionária.",
+      "agendamentoId": "agd-0003"
+    },
+    {
+      "id": "trn-0006",
+      "tipo": "onibus",
+      "destino": "volta",
+      "dataInicio": "2020-03-20T18:30",
+      "dataTermino": "2020-03-20T21:00",
+      "comentarios": "Encontrar taxista na volta.",
+      "agendamentoId": "agd-0003"
+    },
+    {
+      "id": "trn-0007",
+      "tipo": "carro",
+      "destino": "ida",
+      "dataInicio": "2020-03-23T08:00",
+      "dataTermino": "2020-03-23T09:30",
+      "comentarios": "Encontrar o responsável na concessionária.",
+      "agendamentoId": "agd-0004"
+    },
+    {
+      "id": "trn-0008",
+      "tipo": "carro",
+      "destino": "volta",
+      "dataInicio": "2020-03-27T16:30",
+      "dataTermino": "2020-03-27T18:00",
+      "comentarios": "Encontrar taxista na volta.",
+      "agendamentoId": "agd-0004"
+    }
+  ],
+  "ocorrencias": [
+    {
+      "dataOcorrencia": "2020-03-23",
+      "textoOcorrencia": "outro testee",
+      "responsavel": "Fernando",
+      "tipo": "ocorrencia",
+      "id": 2
+    },
+    {
+      "dataOcorrencia": "2020-03-23",
+      "textoOcorrencia": "Teste 345",
+      "responsavel": "Fernando",
+      "tipo": "rascunho",
+      "id": 3
+    },
+    {
+      "dataOcorrencia": "2020-03-26",
+      "textoOcorrencia": "Testando Ocorrencia Reactive Forms",
+      "responsavel": "Fernando Prado",
+      "tipo": "rascunho",
+      "id": 4
+    },
+    {
+      "dataOcorrencia": "2020-01-29",
+      "textoOcorrencia": "Teste 34567",
+      "responsavel": "Fernando J",
+      "tipo": "rascunho",
+      "id": 5
+    }
+  ]
+}

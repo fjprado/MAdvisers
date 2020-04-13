@@ -1,0 +1,21 @@
+<div class="col-xs-12 col-sm-6" *ngFor="let item of transporte | async">
+  <!-- async no template substitui o método subscribe no component -->
+
+  <div class="box box-solid">
+    <div class="box-header with-border">
+      <div class="user-block">
+        <img *ngIf="item.tipo == 'aviao'" alt="Tipo Transporte" class="img-circle" src="assets/img/tipo-transporte/aviao.jpg">
+        <img *ngIf="item.tipo == 'carro'" alt="Tipo Transporte" class="img-circle" src="assets/img/tipo-transporte/carro.jpg">
+        <img *ngIf="item.tipo == 'onibus'" alt="Tipo Transporte" class="img-circle" src="assets/img/tipo-transporte/onibus.jpg">
+        <span class="username">{{item?.tipo}} - {{item?.destino}}</span>
+        <span class="description">{{item?.dataInicio | date: 'dd/MM/yyyy - hh:mm'}}</span>
+        <span class="description">{{item?.dataTermino | date: 'dd/MM/yyyy - hh:mm'}}</span>
+      </div>
+    </div>
+
+    <div class="box-body">
+      <p>{{item?.comentarios}}</p>
+    </div>
+  </div>
+
+</div>

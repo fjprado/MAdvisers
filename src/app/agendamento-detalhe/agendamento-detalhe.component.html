@@ -1,0 +1,53 @@
+<section class="content-header">
+  <h1>
+
+  </h1>
+</section>
+
+
+<section class="content">
+
+  <div class="row">
+      <div class="col-xs-12">
+        <div class="box box-solid">
+          <div class="box-header with-border">
+            <i class="fa fa-home"></i>
+
+            <h3 class="box-title">{{agendamento?.concessionaria}}</h3><span class="pull-right"><h4 class="box-title">{{agendamento?.marca}}</h4></span>
+          </div>
+          <!-- /.box-header -->
+          <div class="box-body">
+            <dl class="col-sm-10 col-xs-12">
+              <dt>Data Inicio</dt>
+              <dd>{{agendamento?.dataInicio | date: 'dd/MM/yyyy'}}</dd>
+              <dt>Data Término</dt>
+              <dd>{{agendamento?.dataTermino | date: 'dd/MM/yyyy'}}</dd>
+              <dt>Responsável</dt>
+              <dd>{{agendamento?.nomeResponsavel}}</dd>
+              <dt>Contato</dt>
+              <dd>{{agendamento?.contatoResponsavel}}</dd>
+            </dl>
+          </div>
+          <!-- /.box-body -->
+          <div class="box-footer detail-footer">
+          <a class="pull-left detail-active" routerLinkActive="detail-active" [routerLink]="['informacoes']">
+             Informações
+          </a>
+          <a class="pull-right" routerLinkActive="detail-active" [routerLink]="['transporte']">
+             Transporte
+          </a>
+        </div>
+        </div>
+      </div>
+      <!-- /.col-xs-12 -->
+
+  </div>
+
+
+  <div class="row">
+    <!--INÍCIO DAS INFORMAÇÕES -->
+    <router-outlet></router-outlet>
+    <!-- FIM DAS INFORMAÇÕES -->
+  </div>
+
+</section>

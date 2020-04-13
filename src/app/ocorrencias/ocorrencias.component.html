@@ -1,0 +1,38 @@
+<section class="content-header">
+</section>
+
+<section class="content">
+  <div class="container-ocorrencia jumbotron col-xs-12 col-sm-6">
+    <h2>Registro de Ocorrências</h2>
+    <form [formGroup]="ocorrenciaForm" novalidate>
+      <h3>Nova Ocorrência</h3>
+      <div>
+        <div class="p-data">
+          <label class="data-label">Data: </label>
+          <madv-input-container errorMessage="Obrigatório" label="Data">
+          <input type="date" class="form-control ocorrencia-data"
+                  formControlName="dataOcorrencia" placeholder="Data" autocomplete="off">
+          </madv-input-container>
+        </div>
+        <madv-input-container errorMessage="Obrigatório e ao menos 5 caracteres" label="Ocorrência">
+          <textarea rows="10" class="form-control ocorrencia-detalhe" 
+                    formControlName="textoOcorrencia" placeholder="Ocorrência" autocomplete="off"></textarea>
+        </madv-input-container>
+        <madv-input-container>
+          <input class="form-control ocorrencia-responsavel" formControlName="responsavel" placeholder="Responsável" autocomplete="off">
+        </madv-input-container>
+      </div>
+    
+    </form>
+    <div>
+    <button (click)="salvarRascunho(ocorrenciaForm.value)" class="btn btn-success pull-center" [disabled]="!ocorrenciaForm.valid" *ngIf="!ocorrenciaForm.hasError('ocorrenciaEdicao')">Salvar Rascunho</button>
+    <button (click)="salvarEdicao(ocorrenciaForm.value)" class="btn btn-success pull-center" [disabled]="!ocorrenciaForm.valid && !ocorrenciaForm.hasError('ocorrenciaEdicao')" *ngIf="ocorrenciaForm.hasError('ocorrenciaEdicao')">Salvar Edição</button>
+    <button (click)="fecharOcorrencia(ocorrenciaForm.value)" [disabled]="!ocorrenciaForm.valid && !ocorrenciaForm.hasError('ocorrenciaEdicao')" class="btn btn-danger pull-center">Fechar Ocorrência</button>
+    </div>
+  </div>
+  <div>
+    <madv-registro-ocorrencia
+    [registros-ocorrencias]="registrosOcorrencias"></madv-registro-ocorrencia>
+  </div>
+
+</section>

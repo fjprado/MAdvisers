@@ -1,0 +1,11 @@
+<div class="menu-item-info-box">
+  <span class="menu-item-info-box-icon">
+    <img src="assets/img/relogioponto.png"></span>
+
+  <div class="menu-item-info-box-content">
+    <span class="menu-item-info-box-text text-center">{{horaPonto() | date: 'dd/MM/yyyy'}}</span>
+    <span class="menu-item-info-box-text text-center">{{horaPonto() | date: 'HH:mm'}}</span>
+    <a (click)="emitAddEvent()" class="menu-item-info-box-text text-center"><i class="fa fa fa-clock-o"></i>Apontar</a>
+  </div>
+  <!-- /.info-box-content -->
+</div>
