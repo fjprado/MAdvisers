@@ -4,9 +4,9 @@
   <div class="box box-solid">
     <div class="box-header with-border">
       <div class="user-block">
-        <img *ngIf="item.tipo == 'aviao'" alt="Tipo Transporte" class="img-circle" src="assets/img/tipo-transporte/aviao.jpg">
-        <img *ngIf="item.tipo == 'carro'" alt="Tipo Transporte" class="img-circle" src="assets/img/tipo-transporte/carro.jpg">
-        <img *ngIf="item.tipo == 'onibus'" alt="Tipo Transporte" class="img-circle" src="assets/img/tipo-transporte/onibus.jpg">
+        <i *ngIf="item.tipo == 'aviao'" class="fa fa-plane-departure"></i>
+        <i *ngIf="item.tipo == 'carro'" class="fa fa-car"></i>
+        <i *ngIf="item.tipo == 'onibus'" class="fa fa-bus-alt"></i>
         <span class="username">{{item?.tipo}} - {{item?.destino}}</span>
         <span class="description">{{item?.dataInicio | date: 'dd/MM/yyyy - hh:mm'}}</span>
         <span class="description">{{item?.dataTermino | date: 'dd/MM/yyyy - hh:mm'}}</span>

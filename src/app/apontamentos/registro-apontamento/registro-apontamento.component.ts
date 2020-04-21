@@ -14,7 +14,6 @@ export class RegistroApontamentoComponent implements OnInit {
   }
 
   apontamentos(): any[] {
-    console.log(this.apontamentosService.apontamentos)
     return this.apontamentosService.apontamentos;
   }
 

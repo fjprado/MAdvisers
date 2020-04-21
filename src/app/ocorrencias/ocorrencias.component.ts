@@ -77,7 +77,7 @@ export class OcorrenciasComponent implements OnInit {
   salvarRascunho(ocorrencia: OcorrenciaDetalhe) {
     ocorrencia.tipo = 'rascunho'
     this.ocorrenciaService.salvarRascunho(ocorrencia)
-              .subscribe((ocorrenciaId: string) => {
+              .subscribe((ocorrenciaId: number) => {
                 this.carregarDados()
                 this.limparOcorrencia()
               })

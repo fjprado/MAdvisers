@@ -12,11 +12,8 @@ export class RegistroOcorrenciaComponent implements OnInit {
   @Input('registros-ocorrencias') registrosOcorrencias: Observable<any>
 
   constructor(private ocorrenciaService: OcorrenciaService, private ocorrenciaComponent: OcorrenciasComponent) { }
-  //constructor(private ocorrenciaService: OcorrenciaService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    //this.registrosOcorrencias = this.ocorrenciaService.ocorrencias()
-    //this.registrosOcorrencias = this.ocorrenciaService.ocorrencias(this.route.parent.snapshot.params['id'])
   }
 
   carregarDados(){

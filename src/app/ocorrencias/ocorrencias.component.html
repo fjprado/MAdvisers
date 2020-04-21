@@ -25,9 +25,9 @@
     
     </form>
     <div>
-    <button (click)="salvarRascunho(ocorrenciaForm.value)" class="btn btn-success pull-center" [disabled]="!ocorrenciaForm.valid" *ngIf="!ocorrenciaForm.hasError('ocorrenciaEdicao')">Salvar Rascunho</button>
-    <button (click)="salvarEdicao(ocorrenciaForm.value)" class="btn btn-success pull-center" [disabled]="!ocorrenciaForm.valid && !ocorrenciaForm.hasError('ocorrenciaEdicao')" *ngIf="ocorrenciaForm.hasError('ocorrenciaEdicao')">Salvar Edição</button>
-    <button (click)="fecharOcorrencia(ocorrenciaForm.value)" [disabled]="!ocorrenciaForm.valid && !ocorrenciaForm.hasError('ocorrenciaEdicao')" class="btn btn-danger pull-center">Fechar Ocorrência</button>
+      <button (click)="salvarRascunho(ocorrenciaForm.value)" class="btn btn-success pull-center" [disabled]="!ocorrenciaForm.valid" *ngIf="!ocorrenciaForm.hasError('ocorrenciaEdicao')">Salvar Rascunho</button>
+      <button (click)="salvarEdicao(ocorrenciaForm.value)" class="btn btn-success pull-center" [disabled]="!ocorrenciaForm.valid && !ocorrenciaForm.hasError('ocorrenciaEdicao')" *ngIf="ocorrenciaForm.hasError('ocorrenciaEdicao')">Salvar Edição</button>
+      <button (click)="fecharOcorrencia(ocorrenciaForm.value)" [disabled]="!ocorrenciaForm.valid && !ocorrenciaForm.hasError('ocorrenciaEdicao')" class="btn btn-danger pull-center">Fechar Ocorrência</button>
     </div>
   </div>
   <div>

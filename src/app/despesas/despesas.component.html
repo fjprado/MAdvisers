@@ -1,0 +1,40 @@
+<section class="content-header">
+</section>
+
+<section class="content">
+  <div class="container-ocorrencia jumbotron col-xs-12 col-sm-6">
+    <h2>Registro de Despesas</h2>
+    <form [formGroup]="despesaForm" novalidate>
+      <div class="p-data">
+        <label class="data-label">Data: </label>
+        <madv-input-container errorMessage="Obrigatório" label="Data">
+        <input type="date" class="form-control"
+                formControlName="dataDespesa" placeholder="Data" autocomplete="off">
+        </madv-input-container>
+      </div>
+      <madv-input-container errorMessage="Obrigatório" label="Tipo Despesa">
+        <select class="custom-select despesa-tipo form-control" formControlName="tipoDespesa" placeholder="Tipo Despesa" autocomplete="off" >
+          <option value="Refeição" selected>Refeição</option>
+          <option value="Táxi">Táxi</option>
+          <option value="Hotel">Hotel</option>
+          <option value="Ônibus">Ônibus</option>
+          <option value="Pedágio">Pedágio</option>
+          <option value="Outras Despesas">Outras Despesas</option>
+          <option value="Recebimento">Recebimento</option>
+        </select>
+      </madv-input-container>
+      <madv-input-container errorMessage="Obrigatório" label="Valor">
+        <input type="number" class="form-control" 
+                  formControlName="valorDespesa" placeholder="Valor" autocomplete="off">
+      </madv-input-container>
+    </form>
+    <div>
+      <button (click)="salvarDespesa(despesaForm.value)" class="btn btn-success pull-center" [disabled]="!despesaForm.valid"><i class="fas fa-check-circle"></i>Registrar</button>
+    </div>
+  </div>
+  <div>
+    <madv-registro-despesa
+    [registros-despesas]="registrosDespesas"></madv-registro-despesa>
+  </div>
+
+</section>

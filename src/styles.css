@@ -296,6 +296,14 @@ body {
   margin: 0 auto;
 }
 
+.despesa-tipo{
+  margin-top: 5px; 
+  margin-bottom: 5px; 
+  width: 80%; 
+  resize: none; 
+  margin: 0 auto;
+}
+
 .ocorrencia-responsavel{
   margin-top: 5px; 
   margin-bottom: 5px; 

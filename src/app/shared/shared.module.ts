@@ -1,3 +1,4 @@
+import { DespesaService } from './../despesas/despesa.service';
 import { OcorrenciaService } from './../ocorrencias/ocorrencia.service';
 import { ApontamentosService } from './../apontamentos/apontamentos.service';
 import { AgendamentosService } from 'app/agendamentos/agendamentos.service';
@@ -26,7 +27,8 @@ export class SharedModule{
             providers: [AgendamentosService,
                         ApontamentosService,
                         OcorrenciaService, 
-                        NotificationService, 
+                        NotificationService,
+                        DespesaService, 
                         LoginService,
                         LoggedInGuard,
                         {provide: HTTP_INTERCEPTORS, useClass: AuthInteceptor, multi: true}
