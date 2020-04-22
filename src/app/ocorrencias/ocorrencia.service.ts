@@ -10,8 +10,8 @@ export class OcorrenciaService{
 
     constructor(private http: HttpClient){}
 
-    ocorrencias(): Observable<any>{
-        return this.http.get(`${MADV_API}/ocorrencias`)
+    ocorrencias(): Observable<OcorrenciaDetalhe[]>{
+        return this.http.get<OcorrenciaDetalhe[]>(`${MADV_API}/ocorrencias`)
     }
 
     editarRascunho(id: string): Observable<OcorrenciaDetalhe>{

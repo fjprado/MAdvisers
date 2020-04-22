@@ -13,10 +13,9 @@ import { reduce, map } from 'rxjs/operators'
 export class DespesasComponent implements OnInit {
 
   constructor(private despesaService: DespesaService, private formBuilder: FormBuilder) { }
-
-  dadosRegistros: RegistroDespesaComponent
-  registrosDespesas: Observable<Despesa[]>
+  registrosDespesas: Despesa[]
   despesaForm: FormGroup
+  totalDespesas: number
 
   ngOnInit() {
     this.despesaForm = new FormGroup({
@@ -24,11 +23,10 @@ export class DespesasComponent implements OnInit {
       tipoDespesa: new FormControl('', [Validators.required]),
       valorDespesa: new FormControl('', [Validators.required])
     })
-    this.carregarDados()
-  }
-
-  carregarDados() {
-    this.registrosDespesas = this.despesaService.despesas()
+    this.despesaService.despesas()
+                          .subscribe((despesas: Despesa[]) => {
+                            this.registrosDespesas = despesas})
+    this.totalDespesas = this.despesaService.total(this.registrosDespesas)
   }
 
   limparDespesa() {
@@ -41,11 +39,17 @@ export class DespesasComponent implements OnInit {
 
   salvarDespesa(despesa: Despesa){
     return this.despesaService.salvarDespesa(despesa)
-                              .subscribe((despesaId: number) => {
-                                  this.carregarDados()
+                              .subscribe((despesa: Despesa) => {
+                                  this.registrosDespesas.push(despesa)
+                                  this.totalDespesas = this.despesaService.total(this.registrosDespesas)
                                   this.limparDespesa()
-                                  this.dadosRegistros.total()
                               })
   }
+
+  // total(){
+  //   this.totalDespesas = this.registrosDespesas.map(despesas => this.totalDespesas = despesas.valorDespesa)
+  //                                              .reduce((prev, value) => prev + value, 0)
+  //   console.log(`${this.totalDespesas} - metodo total` )
+  // }
 
 }

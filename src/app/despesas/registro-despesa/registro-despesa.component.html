@@ -5,7 +5,7 @@
       <h3 class="box-title">Registro de Despesas</h3>
     </div>
     <div class="box-body">
-      <div *ngIf="!registrosDespesas.length == 0">
+      <div *ngIf="registrosDespesas.length == 0">
         <p class="text-center">
           Não há despesas
         </p>
@@ -19,7 +19,7 @@
               <th style="width:25%">Valor</th>
               <th style="width:10%"></th>
             </tr>
-            <tr *ngFor="let despesa of registrosDespesas | async">
+            <tr *ngFor="let despesa of registrosDespesas">
               <td>{{despesa.dataDespesa | date:'shortDate' }}</td>
               <td>{{despesa.tipoDespesa}}</td>
               <td>{{despesa.valorDespesa | currency: 'BRL' : 'symbol' }}</td>

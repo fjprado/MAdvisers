@@ -9,7 +9,7 @@ import { OcorrenciasComponent } from '../ocorrencias.component';
   templateUrl: './registro-ocorrencia.component.html'
 })
 export class RegistroOcorrenciaComponent implements OnInit {
-  @Input('registros-ocorrencias') registrosOcorrencias: Observable<any>
+  @Input('registros-ocorrencias') registrosOcorrencias: OcorrenciaDetalhe[]
 
   constructor(private ocorrenciaService: OcorrenciaService, private ocorrenciaComponent: OcorrenciasComponent) { }
 
@@ -17,7 +17,7 @@ export class RegistroOcorrenciaComponent implements OnInit {
   }
 
   carregarDados(){
-    this.registrosOcorrencias = this.ocorrenciaService.ocorrencias()
+    this.ocorrenciaService.ocorrencias().subscribe(ocorrencias => this.registrosOcorrencias = ocorrencias)
   }
 
   editarRascunho(ocorrencia: any){

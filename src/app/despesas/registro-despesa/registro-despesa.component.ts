@@ -1,3 +1,4 @@
+import { DespesasComponent } from './../despesas.component';
 import { Despesa } from './../despesa.model';
 import { reduce, map, tap } from 'rxjs/operators';
 import { DespesaService } from './../despesa.service';
@@ -10,40 +11,24 @@ import { Observable } from 'rxjs';
 })
 export class RegistroDespesaComponent implements OnInit {
 
-  @Input('registros-despesas') registrosDespesas: Observable<any>
-  totalDespesas: number
-  valores: number[]
-  despesas: Despesa[] = []
+  @Input('registros-despesas') registrosDespesas: Despesa[]
+  @Input('total-despesas') totalDespesas: number
 
   constructor(private despesaService: DespesaService) { }
 
   ngOnInit() {
-    this.registrosDespesas = this.despesaService.despesas()
-    this.total()
-  }
-
-  carregarDados(){
-    this.registrosDespesas = this.despesaService.despesas()
-    this.total()
+    this.totalDespesas = this.despesaService.total(this.registrosDespesas)
   }
 
   removerDespesa(despesa: any){
+    console.log(despesa.id)
     this.despesaService.removerDespesa(despesa)
-                .subscribe((data)=>{
-                  this.carregarDados()
+                .subscribe((despesa: Despesa)=>{
+                  this.registrosDespesas.filter(despesa => 
+                                                !this.registrosDespesas.find(item => despesa.id == item.id))
+                  console.log(`${this.registrosDespesas} - registros - init registros` )
+                  this.totalDespesas = this.despesaService.total(this.registrosDespesas)
+                  console.log(`${this.totalDespesas} - valores - init registros` )
                 })
   }
-
-  todasDespesas(): Despesa[]{
-    this.registrosDespesas.subscribe(despesas => this.despesas = despesas)
-    console.log(this.despesas)
-    return this.despesas
-  }
-
-  total(){
-    this.valores = this.todasDespesas().map(despesas => this.totalDespesas = despesas.valorDespesa)
-    this.totalDespesas = this.valores.reduce((prev, value) => prev + value, 0)
-  }
-
-
 }

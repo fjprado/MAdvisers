@@ -8,13 +8,10 @@ import { reduce, tap } from 'rxjs/operators';
 @Injectable()
 export class DespesaService{
 
-    constructor(private http: HttpClient){}
-
-    todasDespesas: Despesa[]
-    valorDespesas: number[]
-    valorDespesa: number
     totalDespesas: number
 
+    constructor(private http: HttpClient){}
+    
     despesas(): Observable<Despesa[]>{
         return this.http.get<Despesa[]>(`${MADV_API}/despesas`)
     }
@@ -23,19 +20,15 @@ export class DespesaService{
         return this.http.post(`${MADV_API}/despesas`, despesa)
     }
 
-    removerDespesa(despesa: Despesa): Observable<any>{
-        return this.http.delete(`${MADV_API}/despesas/${despesa.id}`)
+    removerDespesa(despesa: Despesa): Observable<Despesa>{
+        return this.http.delete<Despesa>(`${MADV_API}/despesas/${despesa.id}`)
     }
 
-    // total(): number{
-    //     this.despesas().subscribe(despesas => this.todasDespesas = despesas)
-    //     console.log(this.todasDespesas)
-    //     this.valorDespesas = this.todasDespesas.map(despesa => this.valorDespesa = despesa.valorDespesa)
-    //     console.log(this.valorDespesa)
-    //     console.log(this.valorDespesas)
-    //     this.totalDespesas = this.valorDespesas.reduce((prev, value) => prev + value, 0)
-    //     console.log(this.totalDespesas)
-    //     return this.totalDespesas
-    // }
+    total(todasDespesas: Despesa[]): number{
+        console.log(`${todasDespesas} - todas despesa - service` )
+        this.totalDespesas = todasDespesas.reduce((prev, value) => prev + value.valorDespesa, 0)
+        console.log(`${this.totalDespesas} - total despesas - service` )
+        return this.totalDespesas
+    }
 
 }

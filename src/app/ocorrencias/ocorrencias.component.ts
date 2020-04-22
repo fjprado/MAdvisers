@@ -26,7 +26,7 @@ export class OcorrenciasComponent implements OnInit {
   }
   
   ocorrenciaForm: FormGroup
-  registrosOcorrencias: Observable<OcorrenciaDetalhe[]>
+  registrosOcorrencias: OcorrenciaDetalhe[]
   idOcorrenciaRascunho: number
 
   constructor(private ocorrenciaService: OcorrenciaService, private router: Router, 
@@ -43,7 +43,7 @@ export class OcorrenciasComponent implements OnInit {
   }
 
   carregarDados() {
-    this.registrosOcorrencias = this.ocorrenciaService.ocorrencias()
+    this.ocorrenciaService.ocorrencias().subscribe(ocorrencias => this.registrosOcorrencias = ocorrencias)
   }
 
   limparOcorrencia() {
@@ -64,6 +64,7 @@ export class OcorrenciasComponent implements OnInit {
   }
 
   editarRascunho(ocorrencia: any) {
+    console.log(ocorrencia)
     this.ocorrenciaService.editarRascunho(ocorrencia.id)
     //this.route.snapshot.params['id'])
     //--> captura a imagem do item que foi selecionado e registra-o apenas pela sua chave Id

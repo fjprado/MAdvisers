@@ -197,35 +197,6 @@
       "agendamentoId": "agd-0004"
     }
   ],
-  "ocorrencias": [
-    {
-      "dataOcorrencia": "2020-03-23",
-      "textoOcorrencia": "outro testee",
-      "responsavel": "Fernando",
-      "tipo": "ocorrencia",
-      "id": 2
-    },
-    {
-      "dataOcorrencia": "2020-03-26",
-      "textoOcorrencia": "Testando Ocorrencia Reactive Forms",
-      "responsavel": "Fernando Prado",
-      "tipo": "rascunho",
-      "id": 4
-    },
-    {
-      "dataOcorrencia": "2020-01-29",
-      "textoOcorrencia": "Teste 34567",
-      "responsavel": "Fernando J",
-      "tipo": "rascunho",
-      "id": 5
-    },
-    {
-      "dataOcorrencia": "2020-04-17",
-      "textoOcorrencia": "Teste de sistema 2",
-      "responsavel": "Fernando P",
-      "tipo": "ocorrencia",
-      "id": 6
-    }
-  ],
+  "ocorrencias": [],
   "despesas": []
 }
