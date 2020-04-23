@@ -13,22 +13,21 @@ export class RegistroDespesaComponent implements OnInit {
 
   @Input('registros-despesas') registrosDespesas: Despesa[]
   @Input('total-despesas') totalDespesas: number
+  despesaEncontrada: Despesa
 
   constructor(private despesaService: DespesaService) { }
 
   ngOnInit() {
-    this.totalDespesas = this.despesaService.total(this.registrosDespesas)
+    this.registrosDespesas = []
   }
 
-  removerDespesa(despesa: any){
-    console.log(despesa.id)
-    this.despesaService.removerDespesa(despesa)
-                .subscribe((despesa: Despesa)=>{
-                  this.registrosDespesas.filter(despesa => 
-                                                !this.registrosDespesas.find(item => despesa.id == item.id))
-                  console.log(`${this.registrosDespesas} - registros - init registros` )
+  removerDespesa(despesaRemovida: any){
+    this.despesaService.removerDespesa(despesaRemovida)
+                .subscribe(despesa =>{
+                  this.registrosDespesas.splice(this.registrosDespesas
+                                                .indexOf(this.registrosDespesas
+                                                          .find(item => despesaRemovida.id === item.id)),1)
                   this.totalDespesas = this.despesaService.total(this.registrosDespesas)
-                  console.log(`${this.totalDespesas} - valores - init registros` )
                 })
   }
 }

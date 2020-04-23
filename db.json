@@ -198,5 +198,12 @@
     }
   ],
   "ocorrencias": [],
-  "despesas": []
+  "despesas": [
+    {
+      "dataDespesa": "2020-04-16",
+      "tipoDespesa": "Refeição",
+      "valorDespesa": 15,
+      "id": 2
+    }
+  ]
 }

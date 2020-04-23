@@ -25,8 +25,7 @@ export class DespesasComponent implements OnInit {
     })
     this.despesaService.despesas()
                           .subscribe((despesas: Despesa[]) => {
-                            this.registrosDespesas = despesas})
-    this.totalDespesas = this.despesaService.total(this.registrosDespesas)
+                            this.totalDespesas = this.despesaService.total(despesas)})
   }
 
   limparDespesa() {
@@ -45,11 +44,5 @@ export class DespesasComponent implements OnInit {
                                   this.limparDespesa()
                               })
   }
-
-  // total(){
-  //   this.totalDespesas = this.registrosDespesas.map(despesas => this.totalDespesas = despesas.valorDespesa)
-  //                                              .reduce((prev, value) => prev + value, 0)
-  //   console.log(`${this.totalDespesas} - metodo total` )
-  // }
 
 }

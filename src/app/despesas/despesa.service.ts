@@ -25,9 +25,7 @@ export class DespesaService{
     }
 
     total(todasDespesas: Despesa[]): number{
-        console.log(`${todasDespesas} - todas despesa - service` )
         this.totalDespesas = todasDespesas.reduce((prev, value) => prev + value.valorDespesa, 0)
-        console.log(`${this.totalDespesas} - total despesas - service` )
         return this.totalDespesas
     }
 
