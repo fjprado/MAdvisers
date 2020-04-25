@@ -27,7 +27,7 @@ export class OcorrenciaService{
         return this.http.put<OcorrenciaDetalhe>(`${MADV_API}/ocorrencias/${ocorrencia.id}`, ocorrencia)
     }
 
-    removerRascunho(ocorrencia: OcorrenciaDetalhe): Observable<any>{
-        return this.http.delete(`${MADV_API}/ocorrencias/${ocorrencia.id}`)
+    removerRascunho(ocorrencia: OcorrenciaDetalhe): Observable<OcorrenciaDetalhe>{
+        return this.http.delete<OcorrenciaDetalhe>(`${MADV_API}/ocorrencias/${ocorrencia.id}`)
     }
 }

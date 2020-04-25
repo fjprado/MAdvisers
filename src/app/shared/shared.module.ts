@@ -1,3 +1,4 @@
+import { MarcacaoKmService } from './../marcacao-km/marcacao-km.service';
 import { DespesaService } from './../despesas/despesa.service';
 import { OcorrenciaService } from './../ocorrencias/ocorrencia.service';
 import { ApontamentosService } from './../apontamentos/apontamentos.service';
@@ -29,6 +30,7 @@ export class SharedModule{
                         OcorrenciaService, 
                         NotificationService,
                         DespesaService, 
+                        MarcacaoKmService,
                         LoginService,
                         LoggedInGuard,
                         {provide: HTTP_INTERCEPTORS, useClass: AuthInteceptor, multi: true}

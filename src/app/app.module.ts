@@ -27,6 +27,8 @@ import { ApplicationErrorHandler } from './app.error-handler';
 import { SharedModule } from './shared/shared.module';
 import { DespesasComponent } from './despesas/despesas.component';
 import { RegistroDespesaComponent } from './despesas/registro-despesa/registro-despesa.component';
+import { MarcacaoKmComponent } from './marcacao-km/marcacao-km.component';
+import { RegistroMarcacaoKmComponent } from './marcacao-km/registro-marcacao-km/registro-marcacao-km.component';
 
 
 @NgModule({
@@ -45,7 +47,9 @@ import { RegistroDespesaComponent } from './despesas/registro-despesa/registro-d
     OcorrenciasComponent,
     RegistroOcorrenciaComponent,
     DespesasComponent,
-    RegistroDespesaComponent
+    RegistroDespesaComponent,
+    MarcacaoKmComponent,
+    RegistroMarcacaoKmComponent
   ],
   imports: [
     BrowserModule,
