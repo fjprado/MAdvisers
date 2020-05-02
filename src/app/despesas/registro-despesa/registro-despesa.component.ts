@@ -15,7 +15,8 @@ export class RegistroDespesaComponent implements OnInit {
   @Input('total-despesas') totalDespesas: number
   despesaEncontrada: Despesa
 
-  constructor(private despesaService: DespesaService) { }
+  constructor(private despesaService: DespesaService) { 
+  }
 
   ngOnInit() {
     this.registrosDespesas = []
