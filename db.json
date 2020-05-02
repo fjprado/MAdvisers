@@ -200,10 +200,33 @@
   "ocorrencias": [],
   "despesas": [
     {
-      "dataDespesa": "2020-04-16",
+      "dataDespesa": "2020-05-02",
       "tipoDespesa": "Refeição",
-      "valorDespesa": 15,
+      "valorDespesa": 5,
+      "id": 1
+    }
+  ],
+  "marcacao-km": [
+    {
+      "dataInicio": "2020-05-02",
+      "KmInicio": 5,
+      "dataFinal": "",
+      "KmFinal": "",
+      "id": 1
+    },
+    {
+      "dataInicio": "2020-05-02",
+      "KmInicio": 3,
+      "dataFinal": "",
+      "KmFinal": "",
       "id": 2
+    },
+    {
+      "dataInicio": "2020-05-02",
+      "kmInicio": 4,
+      "dataFinal": "",
+      "kmFinal": "",
+      "id": 3
     }
   ]
 }

@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-sm-6">
+<div class="col-xs-12 col-sm-7">
   <div class="box box-solid">
     <div class="box-header">
       <i class="fa fa-clock-o"></i>
@@ -26,7 +26,7 @@
             <tr *ngFor="let km of registrosKm">
               <td>{{km.dataInicio | date:'shortDate' }}</td>
               <td>{{km.kmInicio}}</td>
-              <td>{{km.dataFinal !== undefined ? km.dataFinal | date:'shortDate' : 0 }}</td>
+              <td>{{km.dataFinal !== undefined ? (km.dataFinal | date:'shortDate') : 0 }}</td>
               <td>{{km.kmFinal !== undefined ? km.kmFinal : 0 }}</td>
               <td>{{km.kmFinal !== undefined ? km.kmFinal - km.kmInicio : 0}}</td>
               <td><a (click)=finalizarKm(km)><i class="fa fa-calendar-check"></i></a></td>

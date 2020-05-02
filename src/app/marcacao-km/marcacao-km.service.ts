@@ -12,20 +12,21 @@ export class MarcacaoKmService{
 
     constructor(private http: HttpClient){}
     
-    despesas(): Observable<MarcacaoKm[]>{
+    marcacoesKm(): Observable<MarcacaoKm[]>{
         return this.http.get<MarcacaoKm[]>(`${MADV_API}/marcacao-km`)
     }
 
-    salvarDespesa(marcacaoKm: MarcacaoKm){
+    salvarKm(marcacaoKm: MarcacaoKm){
         return this.http.post(`${MADV_API}/marcacao-km`, marcacaoKm)
     }
 
-    removerDespesa(marcacaoKm: MarcacaoKm): Observable<MarcacaoKm>{
+    removerKm(marcacaoKm: MarcacaoKm): Observable<MarcacaoKm>{
         return this.http.delete<MarcacaoKm>(`${MADV_API}/marcacao-km/${marcacaoKm.id}`)
     }
 
-    total(todasKm: MarcacaoKm[]): number{
-        this.totalKm = todasKm.reduce((prev, value) => prev + value.getValor(), 0)
+    total(todosKm: MarcacaoKm[]): number{
+        console.log(todosKm)
+        this.totalKm = todosKm.reduce((prev, value) => prev + value.kmInicio, 0)
         return this.totalKm
     }
 

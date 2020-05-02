@@ -2,8 +2,8 @@
 </section>
 
 <section class="content">
-  <div class="container-ocorrencia jumbotron col-xs-12 col-sm-6">
-    <h2>Registro de Marcação de KMs Rodados</h2>
+  <div class="container-ocorrencia jumbotron col-xs-12 col-sm-5">
+    <h2>Registro de Marcação KMs Rodados</h2>
     <form [formGroup]="kmForm" novalidate>
       <div class="p-data">
         <label class="data-label">Data Ínicio: </label>
@@ -14,7 +14,7 @@
       </div>
       <madv-input-container errorMessage="Obrigatório" label="KmInicio">
         <input type="number" class="form-control" 
-                  formControlName="KmInicio" placeholder="Km Início" autocomplete="off">
+                  formControlName="kmInicio" placeholder="Km Início" autocomplete="off">
       </madv-input-container>
       <div class="p-data">
         <label class="data-label">Data Final: </label>
@@ -25,11 +25,11 @@
       </div>
       <madv-input-container errorMessage="Obrigatório" label="KmFinal">
         <input type="number" class="form-control" 
-                  formControlName="KmFinal" placeholder="Km Final" autocomplete="off">
+                  formControlName="kmFinal" placeholder="Km Final" autocomplete="off">
       </madv-input-container>
     </form>
     <div>
-      <button (click)="salvarKm(despesaForm.value)" class="btn btn-success pull-center" [disabled]="!kmForm.valid"><i class="fas fa-check-circle"></i>Registrar</button>
+      <button (click)="salvarKm(kmForm.value)" class="btn btn-success pull-center" [disabled]="!kmForm.valid"><i class="fas fa-check-circle"></i>Registrar</button>
     </div>
   </div>
   <div>

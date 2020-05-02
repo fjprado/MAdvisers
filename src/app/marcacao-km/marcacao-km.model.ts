@@ -3,8 +3,8 @@ export class MarcacaoKm{
     public dataFinal: Date
     public kmFinal: number
 
-    getValor(): number{
-        return this.kmFinal !== undefined ? this.kmFinal - this.kmInicio : 0
+    public getValor(): number{
+        return this.kmFinal !== undefined ? (this.kmFinal - this.kmInicio) : 0
     }
 
 }

@@ -8,6 +8,7 @@ import { InformacoesComponent } from './agendamento-detalhe/informacoes/informac
 import { ApontamentosComponent } from './apontamentos/apontamentos.component'
 import { OcorrenciasComponent } from './ocorrencias/ocorrencias.component'
 import { DespesasComponent } from './despesas/despesas.component'
+import { MarcacaoKmComponent } from './marcacao-km/marcacao-km.component'
 
 export const ROUTES : Routes = [
     {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ export const ROUTES : Routes = [
     {path: 'ocorrencias', component: OcorrenciasComponent},
     {path: 'agendamentos', component: AgendamentosComponent},
     {path: 'despesas', component: DespesasComponent},
+    {path: 'marcacao-km', component: MarcacaoKmComponent},
     {path: 'agendamentos/:id', component: AgendamentoDetalheComponent,
         children: [
             {path: '', redirectTo: 'informacoes', pathMatch: 'full'},
