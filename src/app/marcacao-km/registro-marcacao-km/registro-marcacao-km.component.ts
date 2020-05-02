@@ -1,3 +1,4 @@
+import { MarcacaoKmService } from './../marcacao-km.service';
 import { MarcacaoKm } from './../marcacao-km.model';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -10,10 +11,20 @@ export class RegistroMarcacaoKmComponent implements OnInit {
   @Input('registros-km')registrosKm: MarcacaoKm[]
   @Input('total-km')totalKm: number
 
-  constructor() { }
+  constructor(private kmService: MarcacaoKmService) { }
 
   ngOnInit() {
     console.log(this.registrosKm)
+  }
+
+  removerKm(kmRemovido: any){
+    this.kmService.removerKm(kmRemovido)
+                .subscribe(despesa =>{
+                  this.registrosKm.splice(this.registrosKm
+                                                .indexOf(this.registrosKm
+                                                          .find(item => kmRemovido.id === item.id)),1)
+                  this.totalKm = this.kmService.total(this.registrosKm)
+                })
   }
 
 }

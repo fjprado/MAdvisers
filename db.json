@@ -206,27 +206,5 @@
       "id": 1
     }
   ],
-  "marcacao-km": [
-    {
-      "dataInicio": "2020-05-02",
-      "KmInicio": 5,
-      "dataFinal": "",
-      "KmFinal": "",
-      "id": 1
-    },
-    {
-      "dataInicio": "2020-05-02",
-      "KmInicio": 3,
-      "dataFinal": "",
-      "KmFinal": "",
-      "id": 2
-    },
-    {
-      "dataInicio": "2020-05-02",
-      "kmInicio": 4,
-      "dataFinal": "",
-      "kmFinal": "",
-      "id": 3
-    }
-  ]
+  "marcacao-km": []
 }
