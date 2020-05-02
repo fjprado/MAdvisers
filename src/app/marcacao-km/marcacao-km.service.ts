@@ -26,8 +26,9 @@ export class MarcacaoKmService{
 
     total(todosKm: MarcacaoKm[]): number{
         console.log(todosKm)
-        this.totalKm = todosKm.reduce((prev, value) => prev + value.kmInicio, 0)
-        console.log(this.totalKm)
+        console.log(`${todosKm} - total service - todoskm`)
+        this.totalKm = todosKm.reduce((prev, value) => prev + value.distancia, 0)
+        console.log(`${this.totalKm} - total service - total`)
         return this.totalKm
     }
 

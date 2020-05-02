@@ -38,10 +38,14 @@ export class MarcacaoKmComponent implements OnInit {
   }
 
   salvarKm(marcacaoKm: MarcacaoKm){
+    marcacaoKm.distancia = marcacaoKm.kmFinal > 0 ? (marcacaoKm.kmFinal - marcacaoKm.kmInicio) : 0
     return this.kmService.salvarKm(marcacaoKm)
                               .subscribe((marcacaoKm: MarcacaoKm) => {
                                   this.registrosKm.push(marcacaoKm)
+                                  console.log(this.registrosKm)
+                                  console.log(`${this.registrosKm} - salvar km - registros`)
                                   this.totalKm = this.kmService.total(this.registrosKm)
+                                  console.log(`${this.totalKm} - salvar km - total`)
                                   this.limparKm()
                               })
   }
