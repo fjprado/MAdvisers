@@ -25,6 +25,7 @@ export class DespesasComponent implements OnInit {
     })
     this.despesaService.despesas()
                           .subscribe((despesas: Despesa[]) => {
+                            this.registrosDespesas = despesas
                             this.totalDespesas = this.despesaService.total(despesas)})
   }
 
