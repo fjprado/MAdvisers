@@ -1,4 +1,4 @@
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { MarcacaoKm } from './marcacao-km.model';
 import { MarcacaoKmService } from './marcacao-km.service';
@@ -8,12 +8,12 @@ import { MarcacaoKmService } from './marcacao-km.service';
   templateUrl: './marcacao-km.component.html'
 })
 export class MarcacaoKmComponent implements OnInit {
-
-  constructor(private fb: FormBuilder, private kmService: MarcacaoKmService) { }
-
+  idMarcacaoKm: number
   registrosKm: MarcacaoKm[] = []
   totalKm: number
   kmForm: FormGroup
+
+  constructor(private fb: FormBuilder, private kmService: MarcacaoKmService) { }
 
   ngOnInit() {
     this.kmForm = new FormGroup({
@@ -28,6 +28,10 @@ export class MarcacaoKmComponent implements OnInit {
                                   this.totalKm = this.kmService.total(marcacoesKm)})
   }
 
+  carregarDados() {
+    this.kmService.marcacoesKm().subscribe(marcacoesKm => this.registrosKm = marcacoesKm)
+  }
+
   limparKm() {
     this.kmForm = new FormGroup({
       dataInicio: new FormControl('', [Validators.required]),
@@ -37,8 +41,29 @@ export class MarcacaoKmComponent implements OnInit {
     })
   }
 
+  setarKm(id: number, dataInicio: Date, kmInicio: number, dataFinal: Date, kmFinal: number, distancia: number, situacao: string) {
+    this.kmForm = new FormGroup({
+      dataInicio: new FormControl(dataInicio, [Validators.required]),
+      kmInicio: new FormControl(kmInicio, [Validators.required]),
+      dataFinal: new FormControl(dataFinal),
+      kmFinal: new FormControl(kmFinal),
+      distancia: new FormControl(distancia),
+      situacao: new FormControl(situacao),
+    })
+    this.idMarcacaoKm = id;
+  }
+
+
+  editarKm(marcacaoKm: MarcacaoKm){
+    this.kmService.editarKm(marcacaoKm.id)
+                          .subscribe(marcacaoKm => marcacaoKm = marcacaoKm)
+    this.setarKm(marcacaoKm.id, marcacaoKm.dataInicio, marcacaoKm.kmInicio, marcacaoKm.dataFinal,
+                 marcacaoKm.kmFinal, marcacaoKm.distancia, marcacaoKm.situacao)
+  }
+
   salvarKm(marcacaoKm: MarcacaoKm){
     marcacaoKm.distancia = marcacaoKm.kmFinal > 0 ? (marcacaoKm.kmFinal - marcacaoKm.kmInicio) : 0
+    marcacaoKm.situacao = marcacaoKm.kmFinal > 0 ? 'Fechado' : 'Aberto'
     return this.kmService.salvarKm(marcacaoKm)
                               .subscribe((marcacaoKm: MarcacaoKm) => {
                                   this.registrosKm.push(marcacaoKm)
@@ -48,6 +73,22 @@ export class MarcacaoKmComponent implements OnInit {
                                   console.log(`${this.totalKm} - salvar km - total`)
                                   this.limparKm()
                               })
+  }
+
+  salvarEdicao(marcacaoKm: MarcacaoKm) {
+    marcacaoKm.distancia = marcacaoKm.kmFinal > 0 ? (marcacaoKm.kmFinal - marcacaoKm.kmInicio) : 0
+    marcacaoKm.situacao = marcacaoKm.kmFinal > 0 ? 'Fechado' : 'Aberto'
+    marcacaoKm.id = this.idMarcacaoKm
+    this.kmService.salvarEdicaoKm(marcacaoKm)
+              .subscribe(sucess => {
+                this.registrosKm = this.registrosKm.filter(registrosKm => registrosKm.id !== this.idMarcacaoKm)
+                this.registrosKm.push(marcacaoKm)
+                console.log(`${this.registrosKm} - salvar edicao - registros`)
+                this.totalKm = this.kmService.total(this.registrosKm)
+                console.log(`${this.totalKm} - salvar edicao - total`)
+                this.carregarDados()
+                this.limparKm()
+              })
   }
 
 }

@@ -1,3 +1,4 @@
+import { MarcacaoKmComponent } from './../marcacao-km.component';
 import { MarcacaoKmService } from './../marcacao-km.service';
 import { MarcacaoKm } from './../marcacao-km.model';
 import { Component, OnInit, Input } from '@angular/core';
@@ -11,7 +12,7 @@ export class RegistroMarcacaoKmComponent implements OnInit {
   @Input('registros-km')registrosKm: MarcacaoKm[]
   @Input('total-km')totalKm: number
 
-  constructor(private kmService: MarcacaoKmService) { }
+  constructor(private kmService: MarcacaoKmService, private kmComponent: MarcacaoKmComponent) { }
 
   ngOnInit() {
     console.log(this.registrosKm)
@@ -25,6 +26,10 @@ export class RegistroMarcacaoKmComponent implements OnInit {
                                                           .find(item => kmRemovido.id === item.id)),1)
                   this.totalKm = this.kmService.total(this.registrosKm)
                 })
+  }
+
+  editarKm(kmEditado: any){
+    this.kmComponent.editarKm(kmEditado)
   }
 
 }

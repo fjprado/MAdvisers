@@ -64,14 +64,10 @@ export class OcorrenciasComponent implements OnInit {
   }
 
   editarRascunho(ocorrencia: any) {
-    console.log(ocorrencia)
     this.ocorrenciaService.editarRascunho(ocorrencia.id)
-    //this.route.snapshot.params['id'])
-    //--> captura a imagem do item que foi selecionado e registra-o apenas pela sua chave Id
-      .subscribe(ocorrencia => ocorrencia = ocorrencia)
+                          .subscribe(ocorrencia => ocorrencia = ocorrencia)
     this.setarOcorrencia(ocorrencia.id, ocorrencia.dataOcorrencia, ocorrencia.textoOcorrencia, ocorrencia.responsavel)
     OcorrenciasComponent.edicao = true
-    console.log(ocorrencia)
   }
 
 

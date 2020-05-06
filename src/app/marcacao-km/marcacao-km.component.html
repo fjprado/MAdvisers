@@ -29,7 +29,8 @@
       </madv-input-container>
     </form>
     <div>
-      <button (click)="salvarKm(kmForm.value)" class="btn btn-success pull-center" [disabled]="!kmForm.valid"><i class="fas fa-check-circle"></i>Registrar</button>
+      <button (click)="salvarKm(kmForm.value)" class="btn btn-success pull-center" [disabled]="!kmForm.valid"><i class="fas fa-check-circle"></i>Salvar</button>
+      <button (click)="salvarEdicao(kmForm.value)" class="btn btn-success pull-center" [disabled]="!kmForm.valid"><i class="fas fa-check-circle"></i>Salvar Edicao</button>
     </div>
   </div>
   <div>

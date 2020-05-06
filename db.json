@@ -204,7 +204,23 @@
       "tipoDespesa": "Refeição",
       "valorDespesa": 5,
       "id": 1
+    },
+    {
+      "dataDespesa": "2020-05-08",
+      "tipoDespesa": "Refeição",
+      "valorDespesa": 13,
+      "id": 2
     }
   ],
-  "marcacao-km": []
+  "marcacao-km": [
+    {
+      "dataInicio": "2020-05-05",
+      "kmInicio": 5,
+      "dataFinal": "2020-05-05",
+      "kmFinal": 22,
+      "distancia": 17,
+      "situacao": "Fechado",
+      "id": 1
+    }
+  ]
 }

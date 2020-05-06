@@ -24,6 +24,14 @@ export class MarcacaoKmService{
         return this.http.delete<MarcacaoKm>(`${MADV_API}/marcacao-km/${marcacaoKm.id}`)
     }
 
+    editarKm(id: number): Observable<MarcacaoKm>{
+        return this.http.get<MarcacaoKm>(`${MADV_API}/marcacao-km/${id}`)
+    }
+
+    salvarEdicaoKm(marcacaoKm: MarcacaoKm): Observable<MarcacaoKm>{
+        return this.http.put<MarcacaoKm>(`${MADV_API}/marcacao-km/${marcacaoKm.id}`, marcacaoKm)
+    }
+
     total(todosKm: MarcacaoKm[]): number{
         console.log(todosKm)
         console.log(`${todosKm} - total service - todoskm`)

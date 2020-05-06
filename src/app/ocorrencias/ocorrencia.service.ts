@@ -14,7 +14,7 @@ export class OcorrenciaService{
         return this.http.get<OcorrenciaDetalhe[]>(`${MADV_API}/ocorrencias`)
     }
 
-    editarRascunho(id: string): Observable<OcorrenciaDetalhe>{
+    editarRascunho(id: number): Observable<OcorrenciaDetalhe>{
         return this.http.get<OcorrenciaDetalhe>(`${MADV_API}/ocorrencias/${id}`)
     }
 
@@ -23,7 +23,6 @@ export class OcorrenciaService{
     }
 
     salvarEdicao(ocorrencia: OcorrenciaDetalhe): Observable<OcorrenciaDetalhe>{
-        console.log(ocorrencia)
         return this.http.put<OcorrenciaDetalhe>(`${MADV_API}/ocorrencias/${ocorrencia.id}`, ocorrencia)
     }
 
