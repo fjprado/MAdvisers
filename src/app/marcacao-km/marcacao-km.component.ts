@@ -54,7 +54,7 @@ export class MarcacaoKmComponent implements OnInit {
   }
 
 
-  editarKm(marcacaoKm: MarcacaoKm){
+  editarKm(marcacaoKm: MarcacaoKm){ //Irá liberar apenas o ultimo movimento da MarcaçãoKm para edição
     this.kmService.editarKm(marcacaoKm.id)
                           .subscribe(marcacaoKm => marcacaoKm = marcacaoKm)
     this.setarKm(marcacaoKm.id, marcacaoKm.dataInicio, marcacaoKm.kmInicio, marcacaoKm.dataFinal,
@@ -89,6 +89,25 @@ export class MarcacaoKmComponent implements OnInit {
                 this.carregarDados()
                 this.limparKm()
               })
+  }
+
+  fecharKm(marcacaoKm: MarcacaoKm){ // Irá liberar apenas os campos dataFinal e kmFinal para edição
+    this.kmService.editarKm(marcacaoKm.id)
+                          .subscribe(marcacaoKm => marcacaoKm = marcacaoKm)
+    this.setarKm(marcacaoKm.id, marcacaoKm.dataInicio, marcacaoKm.kmInicio, marcacaoKm.dataFinal,
+                 marcacaoKm.kmFinal, marcacaoKm.distancia, marcacaoKm.situacao)
+  }
+
+  reabrirKm(marcacaoKm: MarcacaoKm){ // Irá limpar os dados preenchidos no fechamento e voltar para edição
+    this.kmService.editarKm(marcacaoKm.id)
+                    .subscribe(marcacaoKm => marcacaoKm = marcacaoKm)
+    marcacaoKm.dataFinal = null
+    marcacaoKm.kmFinal = 0
+    marcacaoKm.distancia = 0
+    marcacaoKm.situacao = 'Aberto'
+    this.setarKm(marcacaoKm.id, marcacaoKm.dataInicio, marcacaoKm.kmInicio, marcacaoKm.dataFinal,
+                 marcacaoKm.kmFinal, marcacaoKm.distancia, marcacaoKm.situacao)
+    this.salvarEdicao(marcacaoKm)
   }
 
 }

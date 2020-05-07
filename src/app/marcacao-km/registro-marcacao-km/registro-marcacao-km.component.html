@@ -29,8 +29,9 @@
               <td>{{km.dataFinal | date:'shortDate'}}</td>
               <td>{{km.kmFinal}}</td>
               <td>{{km.distancia}}</td>
-              <td><a (click)=finalizarKm(km)><i class="fa fa-calendar-check"></i></a></td>
               <td><a (click)=editarKm(km)><i class="fa fa-edit"></i></a></td>
+              <td *ngIf="km.situacao === 'Aberto'"><a (click)=fecharKm(km)><i class="fa fa-calendar-check"></i></a></td>
+              <td *ngIf="km.situacao === 'Fechado'"><a (click)=reabrirKm(km)><i class="fas fa-undo-alt"></i></a></td>
               <td><a (click)=removerKm(km)><i class="fa fa-ban"></i></a></td>
             </tr>
             <tr>

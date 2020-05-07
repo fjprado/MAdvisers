@@ -28,8 +28,16 @@ export class RegistroMarcacaoKmComponent implements OnInit {
                 })
   }
 
-  editarKm(kmEditado: any){
-    this.kmComponent.editarKm(kmEditado)
+  editarKm(kmSelecionado: any){
+    this.kmComponent.editarKm(kmSelecionado)
+  }
+
+  fecharKm(kmSelecionado: any){
+    this.kmComponent.fecharKm(kmSelecionado)
+  }
+
+  reabrirKm(kmSelecionado: any){
+    this.kmComponent.reabrirKm(kmSelecionado)
   }
 
 }
