@@ -18,48 +18,31 @@ export class MarcacaoKmComponent implements OnInit {
   registrosKm: MarcacaoKm[] = [];
   totalKm: number;
   kmForm: FormGroup;
+  situacao: string = "Novo";
 
-  static edicao = false;
-  static fechar = false;
-  static validadorKm(group: AbstractControl): { [key: string]: boolean } {
-    const dataInicio = group.get("dataInicio");
-    const kmInicio = group.get("kmInicio");
-    const dataFinal = group.get("dataFinal");
-    const kmFinal = group.get("kmFinal");
-    if (
-      (!dataInicio || !kmInicio) &&
-      (dataInicio.touched ||
-        kmInicio.touched ||
-        dataInicio.dirty ||
-        kmInicio.dirty)
-    ) {
-      return { kmEdicao: false };
-    }
-    if (
-      ((dataInicio.value !== null && kmInicio !== null) ||
-        (dataFinal.value !== null && kmFinal !== null)) &&
-      MarcacaoKmComponent.edicao
-    ) {
-      return { kmEdicao: true };
-    }
-    return undefined;
-  }
+  // static validarDatas(group: AbstractControl): { [key: string]: boolean } {
+  //   const dataInicio = group.get("dataInicio");
+  //   const dataFinal = group.get("dataFinal");
+  //   if (dataInicio <= dataFinal) {
+  //     return { data: true };
+  //   } else {
+  //     return { data: false };
+  //   }
+  // }
 
   constructor(private fb: FormBuilder, private kmService: MarcacaoKmService) {}
 
   ngOnInit() {
-    this.kmForm = new FormGroup(
-      {
-        dataInicio: new FormControl("", [Validators.required]),
-        kmInicio: new FormControl("", [
-          Validators.required,
-          Validators.pattern("^[0-9]*$"),
-        ]),
-        dataFinal: new FormControl(""),
-        kmFinal: new FormControl("", [Validators.pattern("^[0-9]*$")]),
-      },
-      { validators: MarcacaoKmComponent.validadorKm }
-    );
+    this.kmForm = new FormGroup({
+      dataInicio: new FormControl("", [Validators.required]),
+      kmInicio: new FormControl("", [
+        Validators.required,
+        Validators.pattern("^[0-9]*$"),
+        Validators.min(1),
+      ]),
+      dataFinal: new FormControl(""),
+      kmFinal: new FormControl("", [Validators.pattern("^[0-9]*$")]),
+    });
     this.kmService.marcacoesKm().subscribe((marcacoesKm: MarcacaoKm[]) => {
       this.registrosKm = marcacoesKm;
       this.totalKm = this.kmService.total(marcacoesKm);
@@ -78,6 +61,7 @@ export class MarcacaoKmComponent implements OnInit {
       kmInicio: new FormControl("", [
         Validators.required,
         Validators.pattern("^[0-9]*$"),
+        Validators.min(1),
       ]),
       dataFinal: new FormControl(""),
       kmFinal: new FormControl("", [Validators.pattern("^[0-9]*$")]),
@@ -93,17 +77,21 @@ export class MarcacaoKmComponent implements OnInit {
     distancia: number,
     situacao: string
   ) {
-    this.kmForm = new FormGroup(
-      {
-        dataInicio: new FormControl(dataInicio, [Validators.required]),
-        kmInicio: new FormControl(kmInicio, [Validators.required]),
-        dataFinal: new FormControl(dataFinal),
-        kmFinal: new FormControl(kmFinal),
-        distancia: new FormControl(distancia),
-        situacao: new FormControl(situacao),
-      },
-      { validators: MarcacaoKmComponent.validadorKm }
-    );
+    this.kmForm = new FormGroup({
+      dataInicio: new FormControl(dataInicio),
+      kmInicio: new FormControl(kmInicio, [
+        Validators.required,
+        Validators.min(1),
+        Validators.pattern("^[0-9]*$"),
+      ]),
+      dataFinal: new FormControl(dataFinal), // validar dias
+      kmFinal: new FormControl(kmFinal, [
+        Validators.min(kmInicio + 1),
+        Validators.pattern("^[0-9]*$"),
+      ]),
+      distancia: new FormControl(distancia),
+      situacao: new FormControl(situacao),
+    });
     this.idMarcacaoKm = id;
   }
 
@@ -121,7 +109,7 @@ export class MarcacaoKmComponent implements OnInit {
       marcacaoKm.distancia,
       marcacaoKm.situacao
     );
-    MarcacaoKmComponent.edicao = true;
+    this.situacao = marcacaoKm.situacao;
   }
 
   salvarKm(marcacaoKm: MarcacaoKm) {
@@ -133,9 +121,7 @@ export class MarcacaoKmComponent implements OnInit {
       .subscribe((marcacaoKm: MarcacaoKm) => {
         this.registrosKm.push(marcacaoKm);
         console.log(this.registrosKm);
-        console.log(`${this.registrosKm} - salvar km - registros`);
         this.totalKm = this.kmService.total(this.registrosKm);
-        console.log(`${this.totalKm} - salvar km - total`);
         this.limparKm();
       });
   }
@@ -150,13 +136,11 @@ export class MarcacaoKmComponent implements OnInit {
         (registrosKm) => registrosKm.id !== this.idMarcacaoKm
       );
       this.registrosKm.push(marcacaoKm);
-      console.log(`${this.registrosKm} - salvar edicao - registros`);
       this.totalKm = this.kmService.total(this.registrosKm);
-      console.log(`${this.totalKm} - salvar edicao - total`);
       this.carregarDados();
       this.limparKm();
     });
-    MarcacaoKmComponent.edicao = false;
+    this.situacao = "Novo";
   }
 
   fecharKm(marcacaoKm: MarcacaoKm) {
@@ -173,7 +157,7 @@ export class MarcacaoKmComponent implements OnInit {
       marcacaoKm.distancia,
       marcacaoKm.situacao
     );
-    MarcacaoKmComponent.fechar = true;
+    this.situacao = "Fechado";
   }
 
   reabrirKm(marcacaoKm: MarcacaoKm) {
@@ -181,19 +165,10 @@ export class MarcacaoKmComponent implements OnInit {
     this.kmService
       .editarKm(marcacaoKm.id)
       .subscribe((marcacaoKm) => (marcacaoKm = marcacaoKm));
-    marcacaoKm.dataFinal = null;
-    marcacaoKm.kmFinal = 0;
+    marcacaoKm.dataFinal = undefined;
+    marcacaoKm.kmFinal = undefined;
     marcacaoKm.distancia = 0;
     marcacaoKm.situacao = "Aberto";
-    this.setarKm(
-      marcacaoKm.id,
-      marcacaoKm.dataInicio,
-      marcacaoKm.kmInicio,
-      marcacaoKm.dataFinal,
-      marcacaoKm.kmFinal,
-      marcacaoKm.distancia,
-      marcacaoKm.situacao
-    );
     this.salvarEdicao(marcacaoKm);
   }
 }

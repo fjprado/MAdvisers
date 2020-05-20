@@ -5,7 +5,7 @@
     <h2>Registro de Marcação KMs Rodados</h2>
     <form [formGroup]="kmForm" novalidate>
       <div class="p-data">
-        <label class="data-label">Data Ínicio: </label>
+        <label class="data-label">Data Inicio: </label>
         <madv-input-container errorMessage="Obrigatório" label="DataInicio">
           <input
             type="date"
@@ -13,20 +13,25 @@
             formControlName="dataInicio"
             placeholder="Data Início"
             autocomplete="off"
+            [readonly]="situacao === 'Fechado'"
           />
         </madv-input-container>
       </div>
-      <madv-input-container errorMessage="Obrigatório" label="KmInicio">
+      <madv-input-container
+        errorMessage="Obrigatório e maior que 0"
+        label="KmInicio"
+      >
         <input
           type="number"
           class="form-control"
           formControlName="kmInicio"
           placeholder="Km Início"
           autocomplete="off"
+          [readonly]="situacao === 'Fechado'"
         />
       </madv-input-container>
       <div class="p-data">
-        <label class="data-label">Data Final: </label>
+        <label class="data-label">Data Final:</label>
         <madv-input-container errorMessage="Obrigatório" label="DataFinal">
           <input
             type="date"
@@ -34,16 +39,18 @@
             formControlName="dataFinal"
             placeholder="Data Final"
             autocomplete="off"
+            [readonly]="situacao === 'Novo' || situacao === 'Aberto'"
           />
         </madv-input-container>
       </div>
-      <madv-input-container errorMessage="Obrigatório" label="KmFinal">
+      <madv-input-container errorMessage="Obrigatório e maior que o Km Inicio" label="KmFinal">
         <input
           type="number"
           class="form-control"
           formControlName="kmFinal"
           placeholder="Km Final"
           autocomplete="off"
+          [readonly]="situacao == 'Novo' || situacao == 'Aberto'"
         />
       </madv-input-container>
     </form>
@@ -52,7 +59,7 @@
         (click)="salvarKm(kmForm.value)"
         class="btn btn-success pull-center"
         [disabled]="!kmForm.valid"
-        *ngIf="!kmForm.hasError('kmEdicao')"
+        *ngIf="situacao === 'Novo'"
       >
         <i class="fa fa-check-circle"></i>Salvar
       </button>
@@ -60,7 +67,7 @@
         (click)="salvarEdicao(kmForm.value)"
         class="btn btn-success pull-center"
         [disabled]="!kmForm.valid"
-        *ngIf="kmForm.hasError('kmEdicao')"
+        *ngIf="situacao === 'Aberto'"
       >
         <i class="fa fa-check-circle"></i>Salvar Edicao
       </button>
@@ -68,7 +75,7 @@
         (click)="salvarEdicao(kmForm.value)"
         class="btn btn-success pull-center"
         [disabled]="!kmForm.valid"
-        *ngIf="!edicao && fechar"
+        *ngIf="situacao === 'Fechado'"
       >
         <i class="fa fa-check-square"></i>Finalizar
       </button>

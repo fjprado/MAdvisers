@@ -214,13 +214,22 @@
   ],
   "marcacao-km": [
     {
-      "dataInicio": "2020-05-15",
-      "kmInicio": 4,
-      "dataFinal": "",
-      "kmFinal": "",
-      "distancia": 0,
-      "situacao": "Aberto",
+      "dataInicio": "2020-05-20",
+      "kmInicio": 3,
+      "dataFinal": "2020-05-21",
+      "kmFinal": 6,
+      "distancia": 3,
+      "situacao": "Fechado",
       "id": 1
+    },
+    {
+      "dataInicio": "2020-05-20",
+      "kmInicio": 8,
+      "dataFinal": "2020-05-20",
+      "kmFinal": 18,
+      "distancia": 10,
+      "situacao": "Fechado",
+      "id": 2
     }
   ]
 }
