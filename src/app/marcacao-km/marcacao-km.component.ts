@@ -23,7 +23,11 @@ export class MarcacaoKmComponent implements OnInit {
   // static validarDatas(group: AbstractControl): { [key: string]: boolean } {
   //   const dataInicio = group.get("dataInicio");
   //   const dataFinal = group.get("dataFinal");
-  //   if (dataInicio <= dataFinal) {
+  //   console.log(dataInicio);
+  //   console.log(dataFinal);
+  //   var dataInicioDate = new Date(dataInicio.value).getTime();
+  //   var dataFinalDate = new Date(dataFinal.value).getTime();
+  //   if (dataInicioDate <= dataFinalDate) {
   //     return { data: true };
   //   } else {
   //     return { data: false };
@@ -77,21 +81,36 @@ export class MarcacaoKmComponent implements OnInit {
     distancia: number,
     situacao: string
   ) {
-    this.kmForm = new FormGroup({
-      dataInicio: new FormControl(dataInicio),
-      kmInicio: new FormControl(kmInicio, [
-        Validators.required,
-        Validators.min(1),
-        Validators.pattern("^[0-9]*$"),
-      ]),
-      dataFinal: new FormControl(dataFinal), // validar dias
-      kmFinal: new FormControl(kmFinal, [
-        Validators.min(kmInicio + 1),
-        Validators.pattern("^[0-9]*$"),
-      ]),
-      distancia: new FormControl(distancia),
-      situacao: new FormControl(situacao),
-    });
+    if (situacao === "Fechado") {
+      this.kmForm = new FormGroup({
+        dataInicio: new FormControl(dataInicio),
+        kmInicio: new FormControl(kmInicio, [
+          Validators.required,
+          Validators.min(1),
+          Validators.pattern("^[0-9]*$"),
+        ]),
+        dataFinal: new FormControl(dataFinal, [Validators.required]), // validar dias
+        kmFinal: new FormControl(kmFinal, [
+          Validators.required,
+          Validators.min(kmInicio + 1),
+          Validators.pattern("^[0-9]*$"),
+        ]),
+        distancia: new FormControl(distancia),
+        situacao: new FormControl(situacao),
+      });
+    } else {
+      this.kmForm = new FormGroup({
+        dataInicio: new FormControl(dataInicio),
+        kmInicio: new FormControl(kmInicio, [
+          Validators.required,
+          Validators.min(1),
+          Validators.pattern("^[0-9]*$"),
+        ]),
+        distancia: new FormControl(distancia),
+        situacao: new FormControl(situacao),
+      });
+    }
+
     this.idMarcacaoKm = id;
   }
 
@@ -155,7 +174,7 @@ export class MarcacaoKmComponent implements OnInit {
       marcacaoKm.dataFinal,
       marcacaoKm.kmFinal,
       marcacaoKm.distancia,
-      marcacaoKm.situacao
+      (marcacaoKm.situacao = "Fechado")
     );
     this.situacao = "Fechado";
   }

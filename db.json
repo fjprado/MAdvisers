@@ -214,22 +214,29 @@
   ],
   "marcacao-km": [
     {
-      "dataInicio": "2020-05-20",
-      "kmInicio": 3,
-      "dataFinal": "2020-05-21",
-      "kmFinal": 6,
-      "distancia": 3,
-      "situacao": "Fechado",
+      "dataInicio": "2020-05-21",
+      "kmInicio": 7,
+      "distancia": 0,
+      "situacao": "Aberto",
       "id": 1
     },
     {
-      "dataInicio": "2020-05-20",
+      "dataInicio": "2020-05-22",
       "kmInicio": 8,
-      "dataFinal": "2020-05-20",
-      "kmFinal": 18,
-      "distancia": 10,
-      "situacao": "Fechado",
+      "dataFinal": "",
+      "kmFinal": "",
+      "distancia": 0,
+      "situacao": "Aberto",
       "id": 2
+    },
+    {
+      "dataInicio": "2020-05-21",
+      "kmInicio": 8,
+      "dataFinal": "2020-05-21",
+      "kmFinal": 13,
+      "distancia": 5,
+      "situacao": "Fechado",
+      "id": 3
     }
   ]
 }
