@@ -197,46 +197,47 @@
       "agendamentoId": "agd-0004"
     }
   ],
-  "ocorrencias": [],
+  "ocorrencias": [
+    {
+      "dataOcorrencia": "2020-05-22",
+      "textoOcorrencia": "testeaaaa",
+      "responsavel": "",
+      "tipo": "rascunho",
+      "id": 1
+    }
+  ],
   "despesas": [
     {
-      "dataDespesa": "2020-05-02",
-      "tipoDespesa": "Refeição",
-      "valorDespesa": 5,
+      "dataDespesa": "2020-05-28",
+      "tipoDespesa": "Táxi",
+      "valorDespesa": 4,
       "id": 1
     },
     {
-      "dataDespesa": "2020-05-08",
+      "dataDespesa": "2020-05-28",
       "tipoDespesa": "Refeição",
-      "valorDespesa": 13,
+      "valorDespesa": 3,
       "id": 2
     }
   ],
   "marcacao-km": [
     {
-      "dataInicio": "2020-05-21",
-      "kmInicio": 7,
-      "distancia": 0,
-      "situacao": "Aberto",
+      "dataInicio": "2020-05-28",
+      "kmInicio": 2,
+      "dataFinal": "2020-05-29",
+      "kmFinal": 5,
+      "distancia": 3,
+      "situacao": "Fechado",
       "id": 1
     },
     {
-      "dataInicio": "2020-05-22",
-      "kmInicio": 8,
-      "dataFinal": "",
-      "kmFinal": "",
-      "distancia": 0,
-      "situacao": "Aberto",
-      "id": 2
-    },
-    {
-      "dataInicio": "2020-05-21",
-      "kmInicio": 8,
-      "dataFinal": "2020-05-21",
-      "kmFinal": 13,
-      "distancia": 5,
+      "dataInicio": "2020-05-29",
+      "kmInicio": 5,
+      "dataFinal": "2020-05-29",
+      "kmFinal": 24,
+      "distancia": 19,
       "situacao": "Fechado",
-      "id": 3
+      "id": 2
     }
   ]
 }

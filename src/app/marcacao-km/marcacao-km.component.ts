@@ -1,9 +1,12 @@
+import { Observable } from "rxjs";
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
   AbstractControl,
+  ValidatorFn,
+  ValidationErrors,
 } from "@angular/forms";
 import { Component, OnInit } from "@angular/core";
 import { MarcacaoKm } from "./marcacao-km.model";
@@ -20,19 +23,25 @@ export class MarcacaoKmComponent implements OnInit {
   kmForm: FormGroup;
   situacao: string = "Novo";
 
-  // static validarDatas(group: AbstractControl): { [key: string]: boolean } {
-  //   const dataInicio = group.get("dataInicio");
-  //   const dataFinal = group.get("dataFinal");
-  //   console.log(dataInicio);
-  //   console.log(dataFinal);
-  //   var dataInicioDate = new Date(dataInicio.value).getTime();
-  //   var dataFinalDate = new Date(dataFinal.value).getTime();
-  //   if (dataInicioDate <= dataFinalDate) {
-  //     return { data: true };
-  //   } else {
-  //     return { data: false };
-  //   }
-  // }
+  static dateMinimum(date: Date): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.value == null) {
+        return null;
+      }
+
+      const controlDate = new Date(control.value);
+      const validationDate = new Date(date);
+
+      return validationDate.getTime() <= controlDate.getTime()
+        ? null
+        : {
+            "date-minimum": {
+              "date-minimum": validationDate,
+              actual: controlDate,
+            },
+          };
+    };
+  }
 
   constructor(private fb: FormBuilder, private kmService: MarcacaoKmService) {}
 
@@ -89,7 +98,10 @@ export class MarcacaoKmComponent implements OnInit {
           Validators.min(1),
           Validators.pattern("^[0-9]*$"),
         ]),
-        dataFinal: new FormControl(dataFinal, [Validators.required]), // validar dias
+        dataFinal: new FormControl(dataFinal, [
+          Validators.required,
+          MarcacaoKmComponent.dateMinimum(dataInicio),
+        ]), // validar dias
         kmFinal: new FormControl(kmFinal, [
           Validators.required,
           Validators.min(kmInicio + 1),
@@ -139,7 +151,6 @@ export class MarcacaoKmComponent implements OnInit {
       .salvarKm(marcacaoKm)
       .subscribe((marcacaoKm: MarcacaoKm) => {
         this.registrosKm.push(marcacaoKm);
-        console.log(this.registrosKm);
         this.totalKm = this.kmService.total(this.registrosKm);
         this.limparKm();
       });
