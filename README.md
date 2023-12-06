@@ -6,11 +6,9 @@ The M-Advisers is a web application that allows users to manage the technical se
 
 ## Features
 
-- **Search Schools:** Easily search for schools based on your location or near a desired location.
-- **List View:** View a comprehensive list of schools that match the search criteria.
-- **Filters:** Use filters to get schools that match your preference.
-- **Map View:** Visualize the location of each school on an interactive map.
-- **Directions:** Get directions from your current location to a selected school.
+- **Check-in:** Easily check in and check out.
+- **Reports:** Generate reports with check-in and check-out plus diary log.
+- **Expenses:** Add diary expenses.
 
 ## Getting Started
 
@@ -22,10 +20,6 @@ Make sure you have the following installed on your machine:
 - npm (Node Package Manager)
 
 ### Installation
-
-## 2. Iniciando o Backend
-
-
 
 1. Clone the repository to your local machine:
 
